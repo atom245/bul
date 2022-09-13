@@ -1,6 +1,6 @@
 TgCrypto
 pyrogram==1.4.16
-youtube-search-python
+youtube-dl
 youtube_search
 requests
 git+https://github.com/Sorrybabe/downloader
