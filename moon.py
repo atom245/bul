@@ -20,58 +20,12 @@ bot = Client(
     api_hash = Config.API_HASH
 )
 
-#start mesajı
-
-@bot.on_message(filters.command(['start']))
-async def start_(client: Client, message: Message):
-    await message.reply_sticker("CAACAgQAAxkBAAI8bmKIvgnlJyCrq9HIxSvCZCbm5CEjAAIaEAACpvFxHg-Z648-SCRWJAQ")
-    await message.reply_text(
-    f"""● **Selam** {message.from_user.mention}\n\n**» Ben müzik indirme botuyum istediğin müziği indirebilirim**\n\n**✅ Yardım için** /help **komutunu kullanın**""",
-        reply_markup=InlineKeyboardMarkup(
-            [[
-                    InlineKeyboardButton('🇹🇷 𝖡𝖾𝗇𝗂 𝖦𝗋𝗎𝖻𝖺 𝖤𝗄𝗅𝖾 🇹🇷', url=f'http://t.me/StarSongBot?startgroup=new'),
-                  ],[
-                    InlineKeyboardButton('✅ 𝖣𝖾𝗌𝗍𝖾𝗄 ', url=f'https://t.me/{Config.GROUP}'),
-                    InlineKeyboardButton('⏳ 𝖪𝖺𝗇𝖺𝗅 ', url=f'https://t.me/{Config.PLAYLIST_NAME}')
-                  ],[
-                    InlineKeyboardButton('🧑🏻‍💻 ɢɪᴛʜᴜʙ ᴋᴀʏɴᴀᴋ ᴋᴏᴅᴜ 🧑🏻‍💻', url=f'https://github.com/MehmetAtes21/Song')
-                ]
-            ]
-        )
-    )
-    
-#yardım mesajı
-
-@bot.on_message(filters.command(['help']))
-def help(client, message):
-    helptext = f'• **Müzik indirmek için /bul komutunu kullabilirsin .**\n\n**Örnek** :\n•> /bul `gece mavisi`'
-    message.reply_text(
-        text=helptext, 
-        quote=False,
-        reply_markup=InlineKeyboardMarkup(
-            [[
-                    InlineKeyboardButton('🇹🇷 𝖡𝖾𝗇𝗂 𝖦𝗋𝗎𝖻𝖺 𝖤𝗄𝗅𝖾 🇹🇷', url=f'http://t.me/StarSongBot?startgroup=new'),
-                  ],[
-                    InlineKeyboardButton('✅ 𝖣𝖾𝗌𝗍𝖾𝗄', url=f'https://t.me/{Config.GROUP}'),
-                    InlineKeyboardButton('⏳ 𝖪𝖺𝗇𝖺𝗅', url=f'https://t.me/{Config.PLAYLIST_NAME}')
-                  ],[
-                    InlineKeyboardButton('🧑🏻‍💻 ɢɪᴛʜᴜʙ ᴋᴀʏɴᴀᴋ ᴋᴏᴅᴜ 🧑🏻‍💻', url=f'https://github.com/MehmetAtes21/Song')
-                ]
-            ]
-        )
-    )
-#alive mesaji#
-
-@bot.on_message(filters.command("alive") & filters.user(Config.BOT_OWNER))
-async def live(client: Client, message: Message):
-    livemsg = await message.reply_text('`Merhaba Sahip Bey 🖤`')
-    
 #musik indirme#
 
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
-    m = message.reply("<b>• **Şarkı Aranıyor** ...</b>")
+    m = message.reply("<b>• **şᴀʀᴋɪ ᴀʀᴀɴɪʏᴏʀ** ...</b>")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -87,21 +41,21 @@ def bul(_, message):
         m.edit("<b>⛔ **Üzgünüm şarkı bulunamadı.**</b>")
         print(str(e))
         return
-    m.edit("<b>•> **İndirme Başladı...**</b>")
+    m.edit("<b>•> **ɪɴᴅɪʀᴍᴇ ʙᴀşʟᴀᴅɪ...**</b>")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"• **ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ** » [𝐌𝐏𝟑 𝐌𝐮̈𝐳𝐢𝐤 𝐁𝐨𝐭](https://t.me/Mp3MuzikBot) \n\n• **ʀᴇsᴍɪ ᴋᴀɴᴀʟ** » [ʀᴇsᴍɪ ᴋᴀɴᴀʟ](https://t.me/StarBotKanal)"
+        rep = f"• **ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ** » [𝐌𝐏𝟑 𝐌𝐮̈𝐳𝐢𝐤 𝐁𝐨𝐭](https://t.me/Mp3MuzikBot) \n\n• **ʀᴇsᴍɪ ᴋᴀɴᴀʟ** » [𝐁𝐢𝐥𝐠𝐢 𝐊𝐚𝐧𝐚𝐥𝛊](https://t.me/StarBotKanal)"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("•> **Yükleniyor**...")
-        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@mutsuz_panda")
+        m.edit("•> **ʏᴜ̈ᴋʟᴇɴɪʏᴏʀ**...")
+        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ")
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="@mutsuz_panda", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
         m.edit("<b>⛔ **Hatanın düzelmesini bekleyin** .</b>")
         print(e)
