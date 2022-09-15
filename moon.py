@@ -47,7 +47,7 @@ def bul(_, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"• **ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ** » [𝐌𝐏𝟑 𝐌𝐮̈𝐳𝐢𝐤 𝐁𝐨𝐭](https://t.me/Mp3MuzikBot) \n\n• **ʀᴇsᴍɪ ᴋᴀɴᴀʟ** » [𝐁𝐢𝐥𝐠𝐢 𝐊𝐚𝐧𝐚𝐥𝛊](https://t.me/StarBotKanal)"
+        rep = f"•> [**ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ**](https://t.me/Mp3MuzikBot) \n\n•> [**ʀᴇsᴍɪ ᴋᴀɴᴀʟ**](https://t.me/StarBotKanal)"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
