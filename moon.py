@@ -25,7 +25,7 @@ bot = Client(
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
-    m = message.reply("<b>• **şᴀʀᴋɪ ᴀʀᴀɴɪʏᴏʀ** ...</b>")
+    m = message.reply("<b>▶️ **şᴀʀᴋɪ ᴀʀᴀɴɪʏᴏʀ** ...</b>")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -41,18 +41,18 @@ def bul(_, message):
         m.edit("<b>⛔ **Üzgünüm şarkı bulunamadı.**</b>")
         print(str(e))
         return
-    m.edit("<b>•> **ɪɴᴅɪʀᴍᴇ ʙᴀşʟᴀᴅɪ...**</b>")
+    m.edit("<b>▶️ **ɪɴᴅɪʀᴍᴇ ʙᴀşʟᴀᴅɪ...**</b>")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"• [𝖬𝗎̈𝗓𝗂𝗄 𝖡𝗈𝗍𝗎](https://t.me/Mp3MuzikBot) \n\n• [𝖱𝖾𝗌𝗆𝗂 𝖪𝖺𝗇𝖺𝗅](https://t.me/StarBotKanal)"
+        rep = f"▶️ **Şarkı**: [{title[:35]}]({link})\n⏳ **Süre**: `{duration}`\n•> [𝖲𝗍𝖺𝗋 𝖬𝗎𝗓𝗂𝗄 𝖡𝗈𝗍](https://t.me/StarMuzikBot) 𝖳𝖺𝗋𝖺𝖿𝗂𝗇𝖽𝖺𝗇 !"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("•> **ʏᴜ̈ᴋʟᴇɴɪʏᴏʀ**...")
+        m.edit("▶️ **ʏᴜ̈ᴋʟᴇɴɪʏᴏʀ**...")
         message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ")
         m.delete()
         bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="ᴍᴜ̈ᴢɪᴋ ʙᴏᴛ", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
