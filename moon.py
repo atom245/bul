@@ -22,7 +22,7 @@ bot = Client(
 
 #musik indirme#
 
-@bot.on_message(filters.command("bul", "indir", "song") & ~filters.edited)
+@bot.on_message(filters.command("bul", "indir") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
     m = message.reply("<b>▶️ **şᴀʀᴋɪ ᴀʀᴀɴɪʏᴏʀ** ...</b>")
