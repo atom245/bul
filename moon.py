@@ -8,8 +8,6 @@ from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
 
-from helpers.filters import command
-
 
 def time_to_seconds(time):
     stringt = str(time)
