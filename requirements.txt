@@ -2,6 +2,8 @@ TgCrypto
 pyrogram==1.4.16
 youtube-dl
 youtube_search
+youtube_search_python
+youtube_dl
 requests
 yt-dlp
 ffmpeg
