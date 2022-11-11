@@ -1,14 +1,20 @@
-import os, youtube_dl, requests, time
-from config import Config
-from youtube_search import YoutubeSearch
-from pyrogram.handlers import MessageHandler
-from pyrogram import Client, filters
+import os
+import requests
+import aiohttp
 import yt_dlp
-from pyrogram.types import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message
-)
+import wget
+
+from pyrogram import Client, filters
+from youtube_search import YoutubeSearch
+from yt_dlp import YoutubeDL
+
+from config import BOT_USERNAME
+from helpers.filters import command
+
+
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
 #config#
