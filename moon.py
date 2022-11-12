@@ -35,7 +35,7 @@ bot = Client(
 
 #musik indirme#
 
-@bot.on_message(filters.command("bul", "song") & ~filters.edited)
+@bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(client, message):
 
     user_id = message.from_user.id
@@ -96,7 +96,7 @@ def bul(client, message):
     except Exception as e:
         print(e)
 
-@bot.on_message(filters.command("vbul", "vsong") & ~filters.edited)
+@bot.on_message(filters.command("vbul") & ~filters.edited)
 async def vsong(client, message):
     ydl_opts = {
         "format": "best",
