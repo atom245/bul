@@ -9,6 +9,6 @@
 
 
 # Deploy
-<a href="https://heroku.com/deploy?template=https://github.com/MehmetAtes21/song">
+<a href="https://heroku.com/deploy?template=https://github.com/Mehmet-rg/bul">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
