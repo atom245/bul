@@ -32,6 +32,21 @@
             "value": "",
             "required": true
         },
+        "PLAYLIST_NAME": {
+            "description": "Playlist kanalının kullanıcı adını @ bu işareti olmadan yazın.",
+            "value": "",
+            "required": true
+        },
+        "GROUP": {
+            "description": "Grubunuzun kullanıcı adını @ bu işareti olmadan yazın.",
+            "value": "",
+            "required": true
+        },
+        "PLAYLIST_ID": {
+            "description": "Playlist kanalının ID-ni yazın.",
+            "value": "",
+            "required": true
+        },
         "BOT_OWNER": {
             "description": "Kendi kullanıcı adınızı @ bu işareti olmadan yazın.",
             "value": "",
