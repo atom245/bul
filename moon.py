@@ -87,7 +87,7 @@ def bul(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ **ʜᴀᴛᴀ**")
+        m.edit("❌ **Acaba Beni Yönetici Mi Yapsanız ?**")
         print(e)
 
     try:
@@ -194,7 +194,7 @@ def bul(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ **ʜᴀᴛᴀ**")
+        m.edit("❌ **Acaba Beni Yönetici Mi Yapsanız ?**")
         print(e)
 
     try:
